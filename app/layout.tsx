@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Fortune Cookie Wisdom",
   description: "Get personalized wisdom based on your input",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -17,19 +18,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className="light"
-      style={{ colorScheme: "light" }}
-    >
+    <html lang="en">
       <body className={inter.className}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="light"
-        enableSystem
-        disableTransitionOnChange
-        enableColorScheme={false}  // ← prevents style injection
-      >
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>
