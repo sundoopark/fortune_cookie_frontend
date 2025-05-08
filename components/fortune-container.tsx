@@ -63,7 +63,7 @@ export function FortuneContainer() {
         <FortuneDisplay wisdom={wisdom} />
       </CardContent>
       <CardFooter className="text-xs text-center text-gray-500 justify-center">
-        Powered by AWS Bedrock FM Model
+        Prepared for the Stanford WebCamp Demo
       </CardFooter>
     </Card>
   )
