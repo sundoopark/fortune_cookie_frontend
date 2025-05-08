@@ -18,21 +18,28 @@ export function FortuneContainer() {
     setWisdom("")
 
     try {
-      // Replace with your actual backend API URL
-      const response = await fetch("https://your-backend-api-url.com/fortune", {
+      console.log("Fetching wisdom for input:", input)
+      const response = await fetch("/api/fortune", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ input }),
+        body: JSON.stringify({ "input": input }),
       })
+
+      const data = await response.json();
+      console.log("Response data:", data)
 
       if (!response.ok) {
         throw new Error("Failed to get wisdom")
       }
 
-      const data = await response.json()
-      setWisdom(data.wisdom)
+      // Update here to use data.fortune instead of data.wisdom
+      if (data.wisdom) {
+        setWisdom(data.wisdom)
+      } else {
+        throw new Error("Unexpected response format")
+      }
     } catch (err) {
       setError("Failed to connect to the wisdom server. Please try again.")
       console.error(err)
